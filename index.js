@@ -15,11 +15,12 @@ let loc = {
 
 app.use('/', express.static(path.resolve(__dirname, 'public')))
 
-app.post('/', (req, res) => {
+app.put('/raw_loc', (req, res) => {
     lat, lon = loc
     in_lat, in_lon = req.body
     lat = in_lat
-    lon = in_lon    
+    lon = in_lon
+    res.status("done")
 })
 
 app.get('/raw_loc', (req, res) => {
