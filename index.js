@@ -6,21 +6,23 @@ const __filename = url.fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const app = express()
-const PORT = 3000
+const PORT = 3000    
 
 let loc = {
     'lat': 6.691099220075941,
     'lon': 124.6766570122493
 }
 
+app.use(express.json())
+
 app.use('/', express.static(path.resolve(__dirname, 'public')))
 
 app.put('/raw_loc', (req, res) => {
-    lat, lon = loc
-    in_lat, in_lon = req.body
+    let {lat, lon} = loc
+    const {in_lat, in_lon} = req.body
     lat = in_lat
     lon = in_lon
-    res.status("done")
+    res.status(200).send("done")
 })
 
 app.get('/raw_loc', (req, res) => {
