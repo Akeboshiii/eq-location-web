@@ -15,19 +15,20 @@ let loc = {
 
 app.use(express.json())
 
-app.use('/', express.static(path.resolve(__dirname, 'public')))
 
 app.put('/raw_loc', (req, res) => {
-    let {lat, lon} = loc
-    const {in_lat, in_lon} = req.body
-    lat = in_lat
-    lon = in_lon
+    const {lat, lon} = req.body
+    console.log(req.body)
+    loc.lat = lat
+    loc.lon = lon
     res.status(200).send("done")
 })
 
 app.get('/raw_loc', (req, res) => {
     res.status(200).json(loc)
 })
+
+app.use('/', express.static(path.resolve(__dirname, 'public')))
 
 app.listen(PORT, () => {
     console.log(`listening to port ${PORT}`)
