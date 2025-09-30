@@ -1,0 +1,19 @@
+body {
+    #map_gps {
+        height: 90dvh;
+    }
+    
+    .refreshBtn {
+        display: inline-block;
+        width: fit-content;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        #loc_btn {
+            font-size: 2rem;
+            border-radius: 20px;
+            padding-inline: 5px 10px;
+            cursor: pointer;
+        }
+    }
+}
